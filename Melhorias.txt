@@ -1,0 +1,5 @@
+Melhoria 1 - Utilziar a função strpos() , no lugar da strstr() : Por ser mais rapido e ocupar menos epaço na memoria, visto que precisamos apanas fazer uma verificação se existe determinada string.
+
+Melhoria 2 - Usar promise para fazer a chamada de get, ganho de perfomace, executar processos assincronos e tratativa de erro.
+
+Melhoria 3 - Tratativa de erro no request da pagina.
