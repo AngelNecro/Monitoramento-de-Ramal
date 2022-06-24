@@ -8,7 +8,7 @@ header("Content-type: application/json; charset=utf-8");
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
-/*
+
 class cliente
 {
 
@@ -52,7 +52,7 @@ class cliente
     function nome_ramal()
     {
         $nomes_ramais = array();
-        $filas2 =  
+        $filas2 = file('filas');
         foreach ($filas2 as $linhas2) {
             if (strpos($linhas2, 'SIP/')) {
                 $linha2 = explode(' ', trim($linhas2));
@@ -108,16 +108,15 @@ class cliente
 }
 $minhaClasse = new cliente();
 $minhaClasse->info_ramal();
-*/
+
+/*
+
 include("./Config/ConexaoDB.php");
 $db = new MYSQL();
 $db->returnConnection();
 
 
-//include("./Models/Ramal.php");
-//$ramal = new Ramal(7000, 'cole', 1, 1, 1);
-//$ramal->create($ramal);
-
-include("./Models/Callcenter.php");
-$idRamal = new Callcenter("chamando");
-var_dump($idRamal);
+include("./Models/Ramal.php");
+$ramal = new Ramal(7002, '7004', 1812191257, 4, 5);
+echo $ramal->readAll($ramal);
+*/

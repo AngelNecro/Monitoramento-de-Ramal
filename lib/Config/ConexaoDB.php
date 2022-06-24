@@ -13,7 +13,6 @@ class MYSQL
     try {
       $this->_con = new PDO("mysql:host=$this->_dbHostname;dbname=$this->_dbName", $this->_dbUsername, $this->_dbPassword);
       $this->_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo "conectado com sucesso";
     } catch (PDOException  $e) {
       echo "Falha ao conectar: " . $e->getMessage();
     }

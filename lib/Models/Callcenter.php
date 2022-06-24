@@ -25,7 +25,8 @@ class Callcenter
     {
         $db = new MYSQL();
         $stm = $db->returnConnection();
-        $row = $stm->query("SELECT id FROM callcenter WHERE statusRamal='$this->statusRamal')");
-        return $row;
+        $row = $stm->query("SELECT id FROM callcenter WHERE statusRamal = '$this->statusRamal';");
+        $result = $row->fetch();
+        return intval($result['id']);
     }
 }

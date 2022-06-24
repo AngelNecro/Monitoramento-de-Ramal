@@ -61,6 +61,16 @@ class Ramal
     {
         $this->userId = $userId;
     }
+
+    public function formatObject($obj = [])
+    {
+        foreach ($obj as $key => $value) {
+            if (is_array($value)) $array[$key] = new ArrayObject($value);
+        }
+        return $obj;
+    }
+
+
     public function create(Ramal $ramal)
     {
         var_dump($ramal->get_nome());
@@ -69,7 +79,12 @@ class Ramal
         $row = $stm->query("INSERT INTO ramal(numero, nome, ip, statusRamalId,userId) VALUES ('$ramal->numero','$ramal->nome','$ramal->ip','$ramal->statusRamalId','$ramal->userId')");
         var_dump($row ? "deu certo" : "deu ruim");
     }
-    public function read()
+    public function readAll()
     {
+        $db = new MYSQL();
+        $stm = $db->returnConnection();
+        $row = $stm->query("SELECT ra.numero,ra.nome,ra.ip,c.statusRamal  as StatusRamal, u.name as NomeUser  FROM ramais.ramal as ra  inner join usuarios u on u.id = ra.userId  inner join callcenter c  on c.id = ra.statusRamalId ;");
+        $results = $this->formatObject($row->fetchAll());
+        return json_encode($results);
     }
 }
